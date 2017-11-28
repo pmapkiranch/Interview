@@ -33,6 +33,7 @@ namespace Interview
             Assert.IsTrue(all.Contains(emp));
         }
 
+        [Test]
         public void Repository_Save_Should_Remove_And_Add_Item_To_List()
         {
             var emp = AddItemToRepo();

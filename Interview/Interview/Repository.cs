@@ -23,13 +23,16 @@ namespace Interview
 
         public T FindById(IComparable id)
         {
-           return _items.Find(getIdPcate(id));
+            return _items.Find(getIdPcate(id));
         }
 
         public void Save(T item)
         {
-            _items.RemoveAll(getIdPcate(item.Id));
-            _items.Add(item);
+            if (!Equals(item, default(T)))
+            {
+                _items.RemoveAll(getIdPcate(item.Id));
+                _items.Add(item);
+            }
         }
 
 

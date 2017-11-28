@@ -18,10 +18,18 @@ namespace Interview
             repository = new Repository<Employee>();
         }
 
+        [TearDown]
+        public void cleanupForTest()
+        {
+            repository = null;
+            result = null;
+        }
+
         [Test]
         public void Repository_All_Should_ReturnIEnumerableTypeOnly()
         {
             result = repository.All();
+
             Assert.IsInstanceOf<IEnumerable<Employee>>(result);
         }
         [Test]
@@ -61,6 +69,7 @@ namespace Interview
             var beforeDeleteCount = repository.All().Count();
             repository.Delete(itemToDelete.Id);
             var afterDeleteCount = repository.All().Count();
+
             Assert.IsTrue(beforeDeleteCount - 1 == afterDeleteCount);
         }
 
@@ -79,6 +88,7 @@ namespace Interview
         public void Repository_FindById_Should_Return_Item_From_List()
         {
             var emps = getEmployees();
+
             var itemToFind = AddEmployeesToRepo(emps).Last();
             var found = repository.FindById(itemToFind.Id);
             
@@ -92,9 +102,13 @@ namespace Interview
         {
            
             var found = repository.FindById(null);
+
             Assert.IsNull(found);
            
         }
+
+       
+        #region private methods
 
         private IEnumerable<Employee> getEmployees()
         {
@@ -121,5 +135,7 @@ namespace Interview
             }
             return emps;
         }
+        #endregion
+
     }
 }

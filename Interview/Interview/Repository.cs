@@ -18,7 +18,7 @@ namespace Interview
 
         public void Delete(IComparable id)
         {
-            throw new NotImplementedException();
+            Athrow new NotImplementedException();
         }
 
         public T FindById(IComparable id)
@@ -28,7 +28,7 @@ namespace Interview
 
         public void Save(T item)
         {
-            throw new NotImplementedException();
+            _items.Add(item);
         }
     }
 }

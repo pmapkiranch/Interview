@@ -6,8 +6,14 @@ using NUnit.Framework;
 namespace Interview
 {
     [TestFixture]
-    public class Tests
+    public class RepositoryTests
     {
+        private Repository<Employee> repository;
 
+        [SetUp]
+        public void setupForTest()
+        {
+
+        }
     }
 }

@@ -23,7 +23,7 @@ namespace Interview
 
         public T FindById(IComparable id)
         {
-            throw new NotImplementedException();
+           return _items.Find(getIdPcate(id));
         }
 
         public void Save(T item)

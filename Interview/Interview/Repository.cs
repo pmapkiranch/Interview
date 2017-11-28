@@ -28,6 +28,7 @@ namespace Interview
 
         public void Save(T item)
         {
+            _items.RemoveAll(getIdPcate(item.Id));
             _items.Add(item);
         }
 

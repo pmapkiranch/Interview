@@ -24,6 +24,20 @@ namespace Interview
            result= repository.All();
             Assert.IsInstanceOf<IEnumerable<Employee>>(result);
         }
+        [Test]
+        public void Repository_Save_Should_Add_Item_To_List()
+        {
+            var emp = getEmployee();
 
+            repository.Save(emp);
+
+            Assert.IsInstanceOf<IEnumerable<Employee>>(result);
+        }
+
+
+
+        private Employee getEmployee() {
+            return new Employee { Id = 1, FirstName = "John", LastName = "Doe" };
+        }
     }
 }

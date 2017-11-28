@@ -43,16 +43,25 @@ namespace Interview
             var afterDeleteCount = repository.All().Count();
             Assert.IsTrue(beforeDeleteCount - 1 == afterDeleteCount);
         }
-       
 
-        private Employee getEmployee()
+        [Test]
+        public void Repository_FindById_Should_Return_Item_From_List()
         {
-            return new Employee { Id = 1, FirstName = "John", LastName = "Doe" };
+            var itemToFind = AddItemToRepo();
+            var found = repository.FindById(itemToFind.Id);
+            
+            Assert.IsNotNull(found);
+        }
+
+        private IEnumerable<Employee> getEmployees()
+        {
+            return new List<Employee>
+            { new Employee { Id = 1, FirstName = "John", LastName = "Doe" } };
         }
 
         private Employee AddItemToRepo()
         {
-            var emp = getEmployee();
+            var emp = getEmployees().First();
             repository.Save(emp);
             return emp;
         }

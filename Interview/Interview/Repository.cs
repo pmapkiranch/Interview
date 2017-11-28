@@ -18,7 +18,7 @@ namespace Interview
 
         public void Delete(IComparable id)
         {
-            Athrow new NotImplementedException();
+            _items.RemoveAll(getIdPcate(id));
         }
 
         public T FindById(IComparable id)
@@ -29,6 +29,13 @@ namespace Interview
         public void Save(T item)
         {
             _items.Add(item);
+        }
+
+
+
+        private Predicate<T> getIdPcate(IComparable id)
+        {
+            return (i => i.Id.Equals(id));
         }
     }
 }
